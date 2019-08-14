@@ -7,8 +7,8 @@ app.use(bodyParser.json());
 
 var port = process.env.PORT || 3000;
 
-var router = require('./routes/v1/');
-app.use('/api/v1/', router);
+var router = require('./models/routes/v1/');
+app.use('/v1/', router);
 
 //サーバ起動
 app.listen(port);
