@@ -2,10 +2,10 @@
   "name": "v-doc_server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "commit": "node ./node_modules/cz-customizable/standalone.js",
-    "start": "node ./app/app.js",
+    "start": "nodemon ./app/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -13,7 +13,7 @@
     "url": "git+https://github.com/supota/v-doc_server.git"
   },
   "author": "supota",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/supota/v-doc_server/issues"
   },
@@ -26,6 +26,7 @@
     "mongoose": "^5.6.9"
   },
   "devDependencies": {
-    "cz-customizable": "^6.2.0"
+    "cz-customizable": "^6.2.0",
+    "nodemon": "^1.19.1"
   }
 }
