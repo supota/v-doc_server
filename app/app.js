@@ -1,5 +1,7 @@
 const express = require('express');
+const multer = require('multer');
 const app = express();
+app.use(multer().none());
 const bodyParser = require('body-parser');
 
 app.use(bodyParser.urlencoded({ extended: true }));
