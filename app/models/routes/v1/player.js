@@ -4,6 +4,12 @@ const moment = require('moment');
 let connection = require('../../../mysql');
 const uuidv4 = require('uuid/v4')
 
+// GET  http://localhost:3000/v1/player/sample
+router.get('/sample', function (req, res, next) {
+    res.json("This is sample API")
+    console.log(" GET: " + req.url)
+})
+
 // GET  http://localhost:3000/v1/player
 router.get('/', function (req, res, next) {
     const getPlayerData = [
@@ -12,7 +18,7 @@ router.get('/', function (req, res, next) {
         { name: '山田太郎', sex: 1 }
     ];
     res.json(getPlayerData);
-    console.log("GET: " + req.url)
+    console.log(" GET: " + req.url)
 });
 
 // POST  http://localhost:3000/v1/player
