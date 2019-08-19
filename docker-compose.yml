@@ -1,13 +1,24 @@
 version: '3.1'
-services:
-  mysql:
-    image: mysql
-    command: --default-authentication-plugin=mysql_native_password
-    restart: always
+services:  
+  db:
+    # todo: make the image slim using alpine
+    build: mysql/
+    volumes:
+       - ./mysql/mysql_data:/var/lib/mysql # データの永続化
+    expose:
+      - "3306"
     environment:
-      MYSQL_DATABASE: supota
-      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+      - MYSQL_ROOT_PASSWORD=root #rootパスワードの設定
+      - MYSQL_DATABASE=supota
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
     ports:
       - "3306:3306"
+  server:
+    build: app/
     volumes:
-      - ./db/:/var/lib/mysql
+      - ./server/:/app/v-doc_server
+    ports:
+      - "3000:3000"
+    links:
+      - "db"
