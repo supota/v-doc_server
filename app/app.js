@@ -7,7 +7,9 @@ const port = process.env.PORT || 3000;
 const helmet = require("helmet");
 
 app.use(multer().none());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({
+    extended: true
+}));
 app.use(bodyParser.json());
 app.use(helmet());
 app.use('/v1/', router);

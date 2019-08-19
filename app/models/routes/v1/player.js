@@ -16,20 +16,21 @@ router.get('/', function (req, res, next) {
 });
 
 // POST  http://localhost:3000/v1/player
-router.post('/', (req, res, next) => {
+router.post('/', (req, res) => {
     let playerList = []
-    
-    const postPlayerData = req.body;
-    const postPlayerName = postPlayerData.name;
-    // const postPlayerSex = postPlayerData.sex
+    let postPlayerData = req.body;
+    let postPlayerName = postPlayerData.name;
+    let postPlayerSex = postPlayerData.sex;
     const playerId = uuidv4();
-    // const createdAt = moment().format('YYYY-MM-DD HH:mm:ss');
+    const createdAt = moment().format('YYYY-MM-DD HH:mm:ss');
     
-    const playerItem = {
+    let playerItem = {
         playerId,
+        createdAt,
         name: postPlayerName,
-        //sex: postPlayerSex
+        sex: postPlayerSex
     };
+
     playerList.push(playerItem);
     res.json(playerItem);
 
