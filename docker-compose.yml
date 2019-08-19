@@ -15,7 +15,7 @@ services:
     ports:
       - "3306:3306"
   server:
-    build: app/
+    build: .
     volumes:
       - ./server/:/app/v-doc_server
     ports:
