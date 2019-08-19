@@ -1,11 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const moment = require('moment');
 
 // GET  http://localhost:3000/v1/player
 router.get('/', function (req, res){
     res.json({
         message: "This is player api"
     })
+    console.log("GET: /")
 });
 
 // GET  http://localhost:3000/v1/player/test
@@ -16,6 +18,7 @@ router.get('/test', function (req, res) {
         { name: '山田太郎', sex: 1 }
     ];
     res.json(playerData);
+    console.log("GET: /test")
 });
 
 //routerをモジュールとして扱う準備
