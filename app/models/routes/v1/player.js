@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const moment = require('moment');
 let connection = require('../../../mysql');
+const uuidv4 = require('uuid/v4')
 
 // GET  http://localhost:3000/v1/player
 router.get('/', function (req, res, next) {
@@ -11,7 +12,7 @@ router.get('/', function (req, res, next) {
         { name: '山田太郎', sex: 1 }
     ];
     res.json(getPlayerData);
-    console.log("GET: " + req.protocol + '://' + req.headers.host + req.url + "v1/player")
+    console.log("GET: " + req.url)
 });
 
 // POST  http://localhost:3000/v1/player
@@ -19,25 +20,20 @@ router.post('/', (req, res, next) => {
     let playerList = []
     
     const postPlayerData = req.body;
-    const postPlayerName = postPlayerData.title;
-    const postPlayerSex = postPlayerData.sex
+    const postPlayerName = postPlayerData.name;
+    // const postPlayerSex = postPlayerData.sex
     const playerId = uuidv4();
-    const createdAt = moment().format('YYYY-MM-DD HH:mm:ss');
+    // const createdAt = moment().format('YYYY-MM-DD HH:mm:ss');
     
     const playerItem = {
         playerId,
         name: postPlayerName,
-        sex: postPlayerSex
+        //sex: postPlayerSex
     };
     playerList.push(playerItem);
     res.json(playerItem);
 
-    let query = `INSERT INTO boards (title, created_at) VALUES (${title}, ${createdAt})`;
-    connection.query(query, function (err, rows) {
-        res.redirect('/');
-    });
-
-    console.log("POST: " + req.protocol + '://' + req.headers.host + req.url + "v1/player" + "/n    : " + playerItem)
+    console.log("POST: " + req.url)
 });
 
 //routerをモジュールとして扱う準備
