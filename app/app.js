@@ -1,8 +1,10 @@
+'use strict';
+
 const express = require('express');
 const multer = require('multer');
 const app = express();
 const bodyParser = require('body-parser');
-let router = require('./models/routes/v1/');
+let router = require('./routes/v1');
 const port = process.env.PORT || 3000;
 const helmet = require("helmet");
 
